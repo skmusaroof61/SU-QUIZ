@@ -1,0 +1,306 @@
+body {
+    background-color: #0D0D0D; /* Dark background */
+    color: #00FF00; /* Green neon text */
+    font-family: 'Share Tech Mono', monospace; /* Hacker-style monospace font */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for scrollability */
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #1A1A1A;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    border: 1px solid #00FF00;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"], button {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #222;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 1em;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+input[type="text"] {
+    width: calc(100% - 32px); /* Account for padding */
+}
+
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00FF00;
+}
+
+button {
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #003300;
+    box-shadow: 0 0 10px #00FF00;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.error-message, .feedback-message {
+    color: #FF0000; /* Red for errors/wrong */
+    text-shadow: 0 0 5px #FF0000;
+    text-align: center;
+    min-height: 1.2em; /* Reserve space to prevent layout shifts */
+    margin-top: 5px;
+}
+
+.feedback-message.correct {
+    color: #00FF00; /* Green for correct */
+    text-shadow: 0 0 5px #00FF00;
+}
+
+/* Login Screen Avatar Selection */
+#avatar-selection {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.avatar-choice {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    transition: border-color 0.2s, transform 0.2s;
+    object-fit: cover;
+    margin: 5px;
+    background-color: #333; /* Fallback if image is broken */
+}
+
+.avatar-choice:hover {
+    transform: scale(1.1);
+}
+
+.avatar-choice.selected {
+    border-color: #00FF00;
+    box-shadow: 0 0 10px #00FF00;
+}
+
+
+/* Game Screen Specifics */
+#game-screen {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    flex-wrap: wrap; /* Allow header items to wrap on small screens */
+}
+
+#player-info {
+    margin-bottom: 5px; /* Spacing for wrapped items */
+}
+
+#streak-info {
+    display: inline;
+    margin-left: 5px;
+    font-size: 0.9em;
+    color: #00FF00; /* Brighter for emphasis */
+}
+
+#question-container {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px dashed #00FF00;
+    margin-bottom: 20px;
+}
+
+#question-meta {
+    font-size: 0.85em;
+    text-align: right;
+    margin-bottom: 10px;
+    color: #00C000; /* Slightly less intense green */
+    text-shadow: 0 0 3px #00C000;
+}
+
+#q-difficulty, #q-points {
+    font-weight: bold;
+}
+
+#question-text {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+#answer-options button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+#short-answer-input {
+    width: calc(100% - 32px);
+    margin-bottom: 10px;
+}
+
+/* Leaderboard */
+#leaderboard-container {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #111;
+    border: 1px solid #00FF00;
+    border-radius: 5px;
+}
+
+#leaderboard-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#leaderboard-list li {
+    padding: 8px 5px; /* Adjusted padding */
+    border-bottom: 1px dashed #005000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically align avatar and text */
+}
+
+#leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+#leaderboard-list .player-name {
+    display: flex; /* For aligning avatar and name */
+    align-items: center;
+}
+
+#leaderboard-list .player-avatar-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+    border: 1px solid #005000;
+    background-color: #222; /* Fallback bg */
+    object-fit: cover;
+}
+
+#leaderboard-list .player-avatar-initial {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #005000;
+    color: #00FF00;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+
+#leaderboard-list .player-score {
+    font-weight: bold;
+    margin-left: 10px; /* Space between name and score */
+    white-space: nowrap; /* Prevent score from wrapping too easily */
+}
+
+/* Popup */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: #1A1A1A;
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #00FF00;
+    text-align: center;
+    box-shadow: 0 0 20px #00FF00;
+    max-width: 90%;
+}
+
+/* Final Screen */
+#final-screen p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+#final-screen button {
+    margin: 5px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    .game-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px; /* Reduced gap */
+    }
+    #player-info {
+        text-align: center; /* Center player info on small screens */
+    }
+    #timer {
+        margin-top: 5px;
+    }
+    input[type="text"], button {
+        font-size: 0.9em;
+    }
+    .avatar-choice {
+        width: 50px;
+        height: 50px;
+    }
+    #leaderboard-list li {
+        font-size: 0.9em;
+    }
+    #leaderboard-list .player-avatar-img, #leaderboard-list .player-avatar-initial {
+        width: 25px;
+        height: 25px;
+        margin-right: 8px;
+    }
+}

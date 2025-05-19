@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SU-QUIZ CHALLENGE</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="login-screen">
+            <h1>SU-QUIZ CHALLENGE</h1>
+            <input type="text" id="playerName" placeholder="Enter your  name" maxlength="20">
+
+            <h2>Choose Your Avatar:</h2>
+            <div id="avatar-selection">
+                <img src="avatars/a1.jpg" alt="Avatar 1" data-avatarid="avatar1.png" class="avatar-choice">
+                <img src="avatars/a2.jpg" alt="Avatar 2" data-avatarid="avatar2.png" class="avatar-choice">
+                <img src="avatars/a3.jpg" alt="Avatar 3" data-avatarid="avatar3.png" class="avatar-choice">
+                <!-- Add more img tags here if you have more avatars -->
+            </div>
+            <p id="avatar-error" class="error-message"></p>
+
+            <button id="startGameBtn">Start Challenge</button>
+            <p id="login-error" class="error-message"></p>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="hidden">
+            <div class="game-header">
+                <div id="player-info">
+                    Player: <span id="current-player-name"></span> | Score: <span id="current-player-score">0</span>
+                    <span id="streak-info"> | Streak: <span id="current-streak-display">0</span></span>
+                </div>
+                <div id="timer">Time: <span>20</span>s</div>
+            </div>
+
+            <div id="question-container">
+                <div id="question-meta" class="hidden"> <!-- Initially hidden, shown by JS -->
+                    Difficulty: <span id="q-difficulty"></span> | Points: <span id="q-points"></span>
+                </div>
+                <h2 id="question-text">Question text will appear here...</h2>
+                <div id="answer-options">
+                    <!-- Options will be populated by JS -->
+                </div>
+                <input type="text" id="short-answer-input" class="hidden" placeholder="Your answer...">
+                <button id="submitAnswerBtn" class="hidden">Submit</button> <!-- Initially hidden for MCQ -->
+            </div>
+            <p id="feedback" class="feedback-message"></p>
+        </div>
+
+        <!-- Leaderboard -->
+        <div id="leaderboard-container" class="hidden"> <!-- Initially hidden until login -->
+            <h2>Live Leaderboard</h2>
+            <ul id="leaderboard-list">
+                <!-- Leaderboard items will be populated by JS -->
+            </ul>
+        </div>
+
+        <!-- Final Score Screen -->
+        <div id="final-screen" class="hidden">
+            <h1>Challenge Over!</h1>
+            <p>Well done, <span id="final-player-name"></span>!</p>
+            <p>Your final score: <span id="final-score"></span></p>
+            <p>Your rank: <span id="final-rank"></span></p>
+            <button id="restartGameBtn">Play Again</button>
+            <button id="shareScoreTwitterBtn">Share on Twitter</button>
+            <button id="copyScoreBtn">Copy Score & Link</button>
+        </div>
+
+        <!-- Warning Popup -->
+        <div id="warning-popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>Hold Up !</h2>
+                <p>Don't leave the game or you might lose focus (and points)!</p>
+                <p>The game is paused. Return to this tab to continue.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <!-- Game Logic -->
+    <script src="app.js"></script>
+
+    <!-- Sound Effects (Optional) -->
+    <audio id="correct-sound" src="sounds/correct.wav" preload="auto"></audio>
+    <audio id="wrong-sound" src="sounds/wrong.wav" preload="auto"></audio>
+    <audio id="tick-sound" src="sounds/tick.wav" preload="auto" loop></audio>
+    <audio id="warning-sound" src="sounds/warning.wav" preload="auto"></audio>
+</body>
+
+</html>
